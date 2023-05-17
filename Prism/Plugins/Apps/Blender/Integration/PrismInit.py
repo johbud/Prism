@@ -41,7 +41,7 @@ prismRoot = os.getenv("PRISM_ROOT")
 if not prismRoot:
     prismRoot = PRISMROOT
 
-if sys.version_info[1] not in [7, 9]:
+if sys.version_info[1] not in [7, 9, 10, 11]:
     raise RuntimeError("Prism supports only Blender versions, which are using Python 3.7 or Python 3.9")
 
 sys.path.insert(0, os.path.join(prismRoot, "Scripts"))

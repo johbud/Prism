@@ -1171,8 +1171,8 @@ class ProjectBrowser(QMainWindow, ProjectBrowser_ui.Ui_mw_ProjectBrowser):
                 self.detailWin.close()
             return
 
-        infoPath = os.path.splitext(scenePath)[0] + "versioninfo.yml"
-        prvPath = os.path.splitext(scenePath)[0] + "preview.jpg"
+        infoPath = os.path.splitext(scenePath)[0] + "_versioninfo.yml"
+        prvPath = os.path.splitext(scenePath)[0] + "_preview.jpg"
 
         if not os.path.exists(infoPath) and not os.path.exists(prvPath):
             if hasattr(self, "detailWin") and self.detailWin.isVisible():
@@ -1703,7 +1703,7 @@ class ProjectBrowser(QMainWindow, ProjectBrowser_ui.Ui_mw_ProjectBrowser):
                 rcmenu.addAction(globalAct)
 
             actDeps = QAction("Show dependencies...", self)
-            infoPath = os.path.splitext(filepath)[0] + "versioninfo.yml"
+            infoPath = os.path.splitext(filepath)[0] + "_versioninfo.yml"
             self.core.configs.findDeprecatedConfig(infoPath)
             if os.path.exists(infoPath):
                 actDeps.triggered.connect(lambda: self.core.dependencyViewer(infoPath))

@@ -662,7 +662,7 @@ class MediaProducts(object):
 
         masterVersions.append(originBase)
         ext = self.core.configs.preferredExtension
-        masterInfoPath = os.path.join(masterBase, "versioninfo" + ext)
+        masterInfoPath = os.path.join(masterBase, "_versioninfo" + ext)
         self.core.setConfig("versionpaths", val=masterVersions, configPath=masterInfoPath)
         return masterPath
 

@@ -1646,7 +1646,7 @@ License: GNU GPL-3.0-or-later<br>
     @err_catcher(name=__name__)
     def getVersioninfoPath(self, scenepath):
         ext = self.configs.preferredExtension
-        return os.path.splitext(scenepath)[0] + "versioninfo" + ext
+        return os.path.splitext(scenepath)[0] + "_versioninfo" + ext
 
     @err_catcher(name=__name__)
     def getScenePreviewPath(self, scenepath):
@@ -1723,7 +1723,7 @@ License: GNU GPL-3.0-or-later<br>
     @err_catcher(name=__name__)
     def getScenefilePaths(self, scenePath):
         paths = [scenePath]
-        infoPath = os.path.splitext(scenePath)[0] + "versioninfo.yml"
+        infoPath = os.path.splitext(scenePath)[0] + "_versioninfo.yml"
         prvPath = os.path.splitext(scenePath)[0] + "preview.jpg"
 
         if os.path.exists(infoPath):
@@ -1758,9 +1758,9 @@ License: GNU GPL-3.0-or-later<br>
         elif mode == "move":
             shutil.move(origFile, targetFile)
 
-        infoPath = os.path.splitext(origFile)[0] + "versioninfo.yml"
+        infoPath = os.path.splitext(origFile)[0] + "_versioninfo.yml"
         prvPath = os.path.splitext(origFile)[0] + "preview.jpg"
-        infoPatht = os.path.splitext(targetFile)[0] + "versioninfo.yml"
+        infoPatht = os.path.splitext(targetFile)[0] + "_versioninfo.yml"
         prvPatht = os.path.splitext(targetFile)[0] + "preview.jpg"
 
         if os.path.exists(infoPath) and not os.path.exists(infoPatht):
@@ -2244,7 +2244,7 @@ License: GNU GPL-3.0-or-later<br>
         self, location, version, origin=None, fps=None, filenameBase="", data=None
     ):
         data = data or {}
-        infoFilePath = os.path.join(location, filenameBase + "versioninfo.yml")
+        infoFilePath = os.path.join(location, filenameBase + "_versioninfo.yml")
         cData = {
             "information": {
                 "Version": version,

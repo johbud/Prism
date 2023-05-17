@@ -862,6 +862,7 @@ class ProjectEntities(object):
 
     @err_catcher(name=__name__)
     def getScenefileData(self, fileName):
+        extension = os.path.basename(fileName).split(".")[-1]
         fname = os.path.basename(fileName).split(self.core.filenameSeparator)
         data = {}
         try:
@@ -871,7 +872,7 @@ class ProjectEntities(object):
 
         data["filename"] = fileName
 
-        if len(fname) == 6:
+        if len(fname) == 5:
             basepath = self.core.paths.getEntityBasePath(fileName)
             relpath = self.getAssetRelPathFromPath(basepath)
             data.update({
@@ -880,13 +881,13 @@ class ProjectEntities(object):
                 "fullEntityName": relpath,
                 "step": fname[1],
                 "category": "",
-                "version": fname[2],
-                "comment": fname[3],
-                "user": fname[4],
-                "extension": fname[5],
+                "comment": fname[2],
+                "user": fname[3],
+                "version": fname[4].split(".")[0],
+                "extension": extension
             })
 
-        elif len(fname) == 7:
+        elif len(fname) == 6:
             basepath = self.core.paths.getEntityBasePath(fileName)
             relpath = self.getAssetRelPathFromPath(basepath)
             data.update({
@@ -895,23 +896,23 @@ class ProjectEntities(object):
                 "fullEntityName": relpath,
                 "step": fname[1],
                 "category": fname[2],
-                "version": fname[3],
-                "comment": fname[4],
-                "user": fname[5],
-                "extension": fname[6],
+                "comment": fname[3],
+                "user": fname[4],
+                "version": fname[5].split(".")[0],
+                "extension": extension
             })
 
-        elif len(fname) == 8:
+        elif len(fname) == 7:
             data.update({
                 "entity": "shot",
                 "entityName": fname[1],
                 "fullEntityName": fname[1],
                 "step": fname[2],
                 "category": fname[3],
-                "version": fname[4],
-                "comment": fname[5],
-                "user": fname[6],
-                "extension": fname[7],
+                "comment": fname[4],
+                "user": fname[5],
+                "version": fname[6].split(".")[0],
+                "extension": extension
             })
 
         else:

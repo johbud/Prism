@@ -1,6 +1,6 @@
 # Prism Pipeline
 
-This is the official repository of the Prism Pipeline for Animation and VFX projects.
+This is a fork of the Prism Pipeline for Animation and VFX projects.
 
 It automates common tasks and simplifies the workflow of the complete project.
 

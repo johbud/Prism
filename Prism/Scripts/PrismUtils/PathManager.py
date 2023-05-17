@@ -338,6 +338,7 @@ class PathManager(object):
     ):
         if entity == "asset":
             # example filename: Body_mod_v0002_details-added_rfr_.max
+            # changed to: Body_mod_details-added_rfr_v0002.max
             assetPath = assetPath or basePath
 
             if (
@@ -363,14 +364,17 @@ class PathManager(object):
                 + step
                 + self.core.filenameSeparator
                 + category
-                + version
                 + self.core.filenameSeparator
                 + comment
                 + self.core.filenameSeparator
                 + user
+                + self.core.filenameSeparator
+                + version
             )
         elif entity == "shot":
             # example filename: shot_a-0010_mod_main_v0002_details-added_rfr_.max
+            # changed to: shot_a-0010_mod_main_details-added_rfr_v0002.max
+            
             basePath = basePath or self.core.shotPath
             if (
                 os.path.basename(os.path.dirname(os.path.dirname(basePath)))
@@ -394,17 +398,17 @@ class PathManager(object):
             )
             fileName += (
                 self.core.filenameSeparator
-                + version
-                + self.core.filenameSeparator
                 + comment
                 + self.core.filenameSeparator
                 + user
+                + self.core.filenameSeparator
+                + version
             )
         else:
             return ""
 
         if extension:
-            fileName += self.core.filenameSeparator + extension
+            fileName += extension
 
         scenePath = os.path.join(dstname, fileName)
 
