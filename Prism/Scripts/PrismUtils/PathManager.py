@@ -408,7 +408,7 @@ class PathManager(object):
             return ""
 
         if extension:
-            fileName += extension
+            fileName += "." + extension
 
         scenePath = os.path.join(dstname, fileName)
 
